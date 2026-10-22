@@ -353,7 +353,11 @@ class CurrentCallViewModel
                 }
             } else {
                 val videoEnabled = LinphoneUtils.isVideoEnabled(call)
-                if (videoEnabled && isVideoEnabled.value == false) {
+                // isVideoEnabled is already true while an outgoing video call rings, so the branch below
+                // never fires for the caller; answering only routes the callee to the speaker.
+                val outgoingVideoConnected = videoEnabled && call.dir == Call.Dir.Outgoing &&
+                    call.state == Call.State.Connected
+                if ((videoEnabled && isVideoEnabled.value == false) || outgoingVideoConnected) {
                     if (isBluetoothEnabled.value == true || isHeadsetEnabled.value == true) {
                         Log.i(
                             "$TAG Audio is routed to bluetooth or headset, do not change it to speaker because video was enabled"

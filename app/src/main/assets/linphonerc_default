@@ -2,7 +2,7 @@
 ## Start of default rc
 
 [sip]
-contact="Linphone Android" <sip:linphone.android@unknown-host>
+contact="ZuluTalk Android" <sip:zulutalk.android@unknown-host>
 use_ipv6=1
 keepalive_period=30000
 sip_port=-1
@@ -22,10 +22,12 @@ upload_bw=0
 size=vga
 automatically_accept=1
 automatically_initiate=0
-automatically_accept_direction=2 #receive only
+automatically_accept_direction=3
 
 [app]
 tunnel=disabled
+keep_service_alive=1
+route_audio_to_speaker_when_video_enabled=1
 auto_download_incoming_voice_recordings=1
 auto_download_incoming_icalendars=1
 
@@ -34,9 +36,6 @@ host=
 port=443
 
 [misc]
-log_collection_upload_server_url=https://files.linphone.org/http-file-transfer-server/hft.php
-file_transfer_server_url=https://files.linphone.org/http-file-transfer-server/hft.php
-version_check_url_root=https://download.linphone.org/releases
 max_calls=10
 history_max_size=100
 conference_layout=1
@@ -52,9 +51,13 @@ return_empty_friends=1
 imdn_to_everybody_threshold=1
 
 [ui]
-contacts_filter=sip.linphone.org
-
-[account_creator]
-url=https://subscribe.linphone.org/api/
+contacts_filter=*
+disable_chat_feature=1
+disable_meetings_feature=1
+disable_call_recordings_feature=1
+automatically_show_dialpad=1
+assistant_hide_create_account=1
+assistant_third_party_sip_account_domain=sip.zulutalk.com
+assistant_third_party_sip_account_transport=tls
 
 ## End of default rc

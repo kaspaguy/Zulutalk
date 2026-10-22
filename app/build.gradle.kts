@@ -14,7 +14,7 @@ plugins {
     alias(libs.plugins.navigation)
 }
 
-val packageName = "org.linphone"
+val packageName = "com.zulutalk.app"
 val useDifferentPackageNameForDebugBuild = false
 
 val sdkPath = providers.gradleProperty("LinphoneSdkBuildDir").get()
@@ -106,14 +106,14 @@ android {
         applicationId = packageName
         minSdk = 28
         targetSdk = 37
-        versionCode = 602008 // 6.02.008
-        versionName = "6.2.8"
+        versionCode = 1
+        versionName = "1.0 (Linphone 6.2.8)"
 
         manifestPlaceholders["appAuthRedirectScheme"] = packageName
 
         ndk {
             //noinspection ChromeOsAbiSupport
-            abiFilters += listOf("armeabi-v7a", "arm64-v8a")
+            abiFilters += listOf("arm64-v8a")
         }
     }
 
@@ -122,7 +122,7 @@ android {
         variant.outputs
             .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
             .forEach { output ->
-                output.outputFileName = "linphone-android-${variant.buildType.name}-$gitVersion.apk"
+                output.outputFileName = "zulutalk-${variant.buildType.name}-${variant.versionName.substringBefore(' ')}.apk"
             }
     }
 
