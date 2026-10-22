@@ -69,6 +69,8 @@ class CoreContext
 
     lateinit var core: Core
 
+    private val bandwidthManager = ZuluTalkBandwidthManager(context)
+
     fun isCoreAvailable(): Boolean {
         return ::core.isInitialized
     }
@@ -715,6 +717,7 @@ class CoreContext
     fun onCoreStarted() {
         Log.i("$TAG Core started, updating configuration if required")
         core.videoCodecPriorityPolicy = CodecPriorityPolicy.Auto
+        bandwidthManager.start()
 
         // Set in the Core the list of directories from which it is allowed to delete a file related to a chat message
         val paths = arrayListOf<String>()
@@ -823,6 +826,7 @@ class CoreContext
         Log.w("$TAG Core is being shut down, notifying managers so they can remove their listeners and do some cleanup if needed")
         val sensorManager = context.getSystemService(SENSOR_SERVICE) as SensorManager
         sensorManager.unregisterListener(proximitySensorListener)
+        bandwidthManager.stop()
 
         contactsManager.onCoreStopped(core)
         telecomManager.onCoreStopped(core)
