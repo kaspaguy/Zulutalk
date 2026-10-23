@@ -1,4 +1,11 @@
 
+# ZuluTalk for Android
+
+**This repository is ZuluTalk, a fork of Linphone Android 6.2.8.** See [ZULUTALK.md](ZULUTALK.md)
+for what ZuluTalk changes and why. The upstream Linphone README follows unchanged.
+
+---
+
 [![pipeline status](https://gitlab.linphone.org/BC/public/linphone-android/badges/master/pipeline.svg)](https://gitlab.linphone.org/BC/public/linphone-android/commits/master) 
 [![weblate status](https://weblate.linphone.org/widget/linphone/linphone-android-6-0/status-badge.png)](https://weblate.linphone.org/engage/linphone/)
 
