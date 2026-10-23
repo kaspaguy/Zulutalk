@@ -122,6 +122,16 @@ class RoundCornersTextureView : CaptureTextureView {
         clipToOutline = true
     }
 
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        // Folding to the cover screen can leave the scaling matrix computed for the inner screen,
+        // which shows only the middle of the video; recompute it for the size we actually got.
+        if (oldw > 0 && oldh > 0 && (w != oldw || h != oldh)) {
+            rotateToMatchDisplayOrientation()
+            setRoundCorners()
+        }
+    }
+
     override fun setAspectRatio(width: Int, height: Int) {
         super.setAspectRatio(width, height)
 
