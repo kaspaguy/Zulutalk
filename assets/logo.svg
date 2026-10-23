@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="ZuluTalk logo">
+  <rect width="1024" height="1024" rx="224" fill="#186B59"/>
+  <path d="M512 233a277 277 0 1 1-142 515l-112 39a16 16 0 0 1-20-20l38-112A277 277 0 0 1 512 233z" fill="#FFFFFF"/>
+  <rect x="348" y="419" width="236" height="185" rx="32" fill="#D7702D"/>
+  <path d="M584 478l72-47a13 13 0 0 1 20 11v136a13 13 0 0 1-20 11l-72-47z" fill="#D7702D"/>
+</svg>
