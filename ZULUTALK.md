@@ -75,9 +75,44 @@ ANDROID_HOME=/path/to/android-sdk ./gradlew ktlintCheck assembleRelease
 Release builds are signed with a key from `keystore.properties`, which is not part of this
 repository. Upstream changes are merged in from Linphone's `release/6.2` branch.
 
+## Credits
+
+ZuluTalk exists because of the work of [Belledonne Communications](https://www.linphone.org)
+and the Linphone contributors. Almost all of the code in this repository is theirs.
+
+- **Linphone Android** app: Copyright © 2010-2025 Belledonne Communications SARL.
+  The full upstream commit history is kept in this repository, so every original author is
+  credited for their work. ZuluTalk's own changes start after upstream commit `dcaa165b7`
+  (tag 6.2.8).
+- **Linphone SDK** 5.5.35 (liblinphone, mediastreamer2, belle-sip, oRTP, bctoolbox, bzrtp and
+  more), by Belledonne Communications under GPLv3. It is used unmodified from Belledonne's
+  Maven repository.
+- **Third-party components** used by Linphone are listed by Belledonne at
+  [Third party components](https://wiki.linphone.org/xwiki/wiki/public/view/Linphone/Third%20party%20components%20/#Hlinphone-android).
+  This list is also linked from the app (Help → About).
+- **Translations** come from the Linphone community on [Weblate](https://weblate.linphone.org/).
+
+Every file changed for ZuluTalk keeps its original Belledonne copyright header and carries a
+"Modified by Thanaaya Technologies for ZuluTalk" notice. New files are marked as ZuluTalk files.
+The app's Help → About screen keeps the GPLv3 notice and the Belledonne copyright.
+
+## Known gaps (planned for 1.3)
+
+Some Help links still point to Linphone. They are inherited from upstream and should point to
+ZuluTalk's own pages:
+
+- "Send debug logs" by email opens Belledonne's Linphone support address.
+- The user guide, privacy policy, terms of use and contact links go to linphone.org.
+- "Contribute on translation" goes to Linphone's Weblate.
+
+The third-party components link and the Belledonne copyright line stay as they are.
+
 ## License
 
-ZuluTalk is distributed under the GNU General Public License v3 (see [LICENSE.txt](LICENSE.txt)).
-It is based on Linphone, Copyright © Belledonne Communications. Linphone is a trademark of
-Belledonne Communications. ZuluTalk is not affiliated with or endorsed by Belledonne
-Communications.
+ZuluTalk is distributed under the GNU General Public License v3 (see [LICENSE.txt](LICENSE.txt)),
+the same license Belledonne Communications uses for the open source release of Linphone.
+Source code for every released ZuluTalk APK is tagged in this repository (`v1.0`, `v1.1`, `v1.2`).
+
+"Linphone" is Belledonne Communications' product name. ZuluTalk is an independent fork. It is
+not affiliated with, endorsed by or supported by Belledonne Communications, so please report
+ZuluTalk problems here, not to Linphone.
