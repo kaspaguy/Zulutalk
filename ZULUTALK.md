@@ -124,6 +124,17 @@ In 1.2, some Help links still pointed to Linphone. In the source they now point 
 | Download / invite | linphone.org | https://zulutalk.com/download/ |
 | Contribute on translation | Linphone Weblate | https://zulutalk.com/credits/#translations (explains that translations come from Linphone's Weblate, and links there) |
 
+Two more fixes so ZuluTalk does not use Belledonne's servers (also in 1.3, not yet released):
+
+- **Log upload:** 1.2 sets Linphone's log server (`files.linphone.org`) when none is configured,
+  so Help → Troubleshooting → Upload logs would send ZuluTalk logs to Belledonne. 1.3 never sets
+  it and clears it on phones where 1.2 did. With no upload server, the Upload button is hidden,
+  and logs are sent by email to reports@zulutalk.com instead.
+- **STUN:** accounts added by hand in 1.2 use Belledonne's public STUN server
+  (`stun.linphone.org`) by default. In 1.3 the default for third-party accounts is empty, so
+  ZuluTalk does not use a free Linphone service on our behalf. Linphone.org accounts keep
+  Linphone's own settings.
+
 These stay unchanged, as credit to Belledonne: the GPLv3 notice, the
 "© Belledonne Communications 2010-2025" line and the Linphone third-party components link
 on the About screen.

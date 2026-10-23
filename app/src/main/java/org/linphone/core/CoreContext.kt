@@ -780,9 +780,14 @@ class CoreContext
                 }
             }
 
-            if (core.logCollectionUploadServerUrl.isNullOrEmpty()) {
-                Log.w("$TAG Logs sharing server URL not set, fixing that")
-                core.logCollectionUploadServerUrl = "https://files.linphone.org/http-file-transfer-server/hft.php"
+            // ZuluTalk logs go to reports@zulutalk.com, never to Belledonne's servers; an empty URL hides the upload button
+            if (core.logCollectionUploadServerUrl.orEmpty().contains("linphone.org")) {
+                Log.w("$TAG Removing Linphone logs sharing server URL")
+                core.logCollectionUploadServerUrl = ""
+            }
+            if (core.fileTransferServer.orEmpty().contains("linphone.org")) {
+                Log.w("$TAG Removing Linphone file transfer server URL")
+                core.fileTransferServer = ""
             }
 
             corePreferences.linphoneConfigurationVersion = currentVersion
