@@ -4,6 +4,9 @@
  * This file is part of linphone-android
  * (see https://www.linphone.org).
  *
+ * Modified by Thanaaya Technologies for ZuluTalk, October 2026
+ * (see ZULUTALK.md for the list of changes).
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +28,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import java.io.File
+import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import org.linphone.R
@@ -87,6 +92,12 @@ class DebugFragment : GenericMainFragment() {
             }
         }
 
+        viewModel.emailDebugLogsEvent.observe(viewLifecycleOwner) {
+            it.consume { path ->
+                emailLogs(File(path))
+            }
+        }
+
         viewModel.uploadDebugLogsFinishedEvent.observe(viewLifecycleOwner) {
             it.consume { url ->
                 if (requireActivity() is AssistantActivity) {
@@ -144,6 +155,26 @@ class DebugFragment : GenericMainFragment() {
                     startActivity(intent)
                 }
             }
+        }
+    }
+
+    private fun emailLogs(file: File) {
+        val context = requireContext()
+        val uri = FileProvider.getUriForFile(context, context.getString(R.string.file_provider), file)
+        val appName = context.getString(R.string.app_name)
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(context.getString(R.string.help_advanced_send_debug_logs_email_address)))
+            putExtra(Intent.EXTRA_SUBJECT, "$appName Logs")
+            putExtra(Intent.EXTRA_STREAM, uri)
+            type = "application/gzip"
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        try {
+            startActivity(
+                Intent.createChooser(intent, context.getString(R.string.help_troubleshooting_share_logs_dialog_title))
+            )
+        } catch (ex: ActivityNotFoundException) {
+            Log.e(ex)
         }
     }
 }

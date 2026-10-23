@@ -103,8 +103,10 @@ Belledonne Communications does not support ZuluTalk, and ZuluTalk users' logs mu
 to them.
 
 - Email: **reports@zulutalk.com**
-- In the app (from 1.3): Help → Troubleshooting → Send debug logs opens an email to
+- In the app (from 1.3): Help → Troubleshooting → Share logs opens an email to
   reports@zulutalk.com with the logs attached.
+- In 1.2, don't use Share logs: it uploads them to Linphone's server. Email
+  reports@zulutalk.com and describe the problem instead.
 - On GitHub: open an issue in this repository. Logs can contain phone numbers and SIP
   addresses, so email them instead of attaching them to a public issue.
 
@@ -126,10 +128,11 @@ In 1.2, some Help links still pointed to Linphone. In the source they now point 
 
 Two more fixes so ZuluTalk does not use Belledonne's servers (also in 1.3, not yet released):
 
-- **Log upload:** 1.2 sets Linphone's log server (`files.linphone.org`) when none is configured,
-  so Help → Troubleshooting → Upload logs would send ZuluTalk logs to Belledonne. 1.3 never sets
-  it and clears it on phones where 1.2 did. With no upload server, the Upload button is hidden,
-  and logs are sent by email to reports@zulutalk.com instead.
+- **Log sharing:** in 1.2, Help → Troubleshooting → Share logs uploads the logs to Linphone's
+  server (`files.linphone.org`) and emails the link to Belledonne's support address. In 1.3,
+  Share logs compresses the logs on the phone and attaches them to an email to
+  reports@zulutalk.com. Nothing is uploaded. 1.3 also clears the Linphone log and file servers
+  on phones where 1.2 set them.
 - **STUN:** accounts added by hand in 1.2 use Belledonne's public STUN server
   (`stun.linphone.org`) by default. In 1.3 the default for third-party accounts is empty, so
   ZuluTalk does not use a free Linphone service on our behalf. Linphone.org accounts keep

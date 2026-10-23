@@ -4,6 +4,9 @@
  * This file is part of linphone-android
  * (see https://www.linphone.org).
  *
+ * Modified by Thanaaya Technologies for ZuluTalk, October 2026
+ * (see ZULUTALK.md for the list of changes).
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -92,6 +95,10 @@ class HelpViewModel
         MutableLiveData()
     }
 
+    val emailDebugLogsEvent: MutableLiveData<Event<String>> by lazy {
+        MutableLiveData()
+    }
+
     val showConfigFileEvent: MutableLiveData<Event<String>> by lazy {
         MutableLiveData()
     }
@@ -173,7 +180,7 @@ class HelpViewModel
             printLogsInLogcat.postValue(corePreferences.printLogsInLogcat)
             developerSettingsEnabled.postValue(corePreferences.showDeveloperSettings)
             checkUpdateAvailable.postValue(corePreferences.checkForUpdateServerUrl.isNotEmpty())
-            uploadLogsAvailable.postValue(!core.logCollectionUploadServerUrl.isNullOrEmpty())
+            uploadLogsAvailable.postValue(true)
         }
     }
 
@@ -223,10 +230,15 @@ class HelpViewModel
 
     @UiThread
     fun shareLogs() {
+        // ZuluTalk: logs are attached to an email to reports@zulutalk.com instead of uploaded to a server
         coreContext.postOnCoreThread { core ->
-            Log.i("$TAG Uploading debug logs for sharing")
-            logsUploadInProgress.postValue(true)
-            core.uploadLogCollection()
+            Log.i("$TAG Compressing debug logs to attach them to an email")
+            val path = core.compressLogCollection()
+            if (path.isNullOrEmpty()) {
+                uploadDebugLogsErrorEvent.postValue(Event(true))
+            } else {
+                emailDebugLogsEvent.postValue(Event(path))
+            }
         }
     }
 
