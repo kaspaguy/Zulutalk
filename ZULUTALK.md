@@ -96,16 +96,37 @@ Every file changed for ZuluTalk keeps its original Belledonne copyright header a
 "Modified by Thanaaya Technologies for ZuluTalk" notice. New files are marked as ZuluTalk files.
 The app's Help → About screen keeps the GPLv3 notice and the Belledonne copyright.
 
-## Known gaps (planned for 1.3)
+## Reporting problems and sending logs
 
-Some Help links still point to Linphone. They are inherited from upstream and should point to
-ZuluTalk's own pages:
+**All ZuluTalk problem reports and error logs go to ZuluTalk, never to Linphone.**
+Belledonne Communications does not support ZuluTalk, and ZuluTalk users' logs must not be sent
+to them.
 
-- "Send debug logs" by email opens Belledonne's Linphone support address.
-- The user guide, privacy policy, terms of use and contact links go to linphone.org.
-- "Contribute on translation" goes to Linphone's Weblate.
+- Email: **reports@zulutalk.com**
+- In the app (from 1.3): Help → Troubleshooting → Send debug logs opens an email to
+  reports@zulutalk.com with the logs attached.
+- On GitHub: open an issue in this repository. Logs can contain phone numbers and SIP
+  addresses, so email them instead of attaching them to a public issue.
 
-The third-party components link and the Belledonne copyright line stay as they are.
+Only report a problem to Linphone if you can reproduce it in the unmodified Linphone app
+from Belledonne.
+
+## Links inside the app (changed for 1.3, not yet released)
+
+In 1.2, some Help links still pointed to Linphone. In the source they now point to ZuluTalk:
+
+| Link | 1.2 (released) | 1.3 (source) |
+|---|---|---|
+| Send debug logs (email) | Belledonne's Linphone support address | reports@zulutalk.com |
+| User guide, contact | linphone.org | https://zulutalk.com/support/ |
+| Privacy policy | linphone.org | https://zulutalk.com/privacy/ |
+| Terms of use | linphone.org | https://zulutalk.com/terms/ |
+| Download / invite | linphone.org | https://zulutalk.com/download/ |
+| Contribute on translation | Linphone Weblate | https://zulutalk.com/credits/#translations (explains that translations come from Linphone's Weblate, and links there) |
+
+These stay unchanged, as credit to Belledonne: the GPLv3 notice, the
+"© Belledonne Communications 2010-2025" line and the Linphone third-party components link
+on the About screen.
 
 ## License
 

@@ -1,8 +1,20 @@
 
 # ZuluTalk for Android
 
-**This repository is ZuluTalk, a fork of Linphone Android 6.2.8.** See [ZULUTALK.md](ZULUTALK.md)
-for what ZuluTalk changes and why. The upstream Linphone README follows unchanged.
+**This repository is ZuluTalk, a free, open-source calling app for Android. It is a fork of
+Linphone Android 6.2.8 by Belledonne Communications.** See [ZULUTALK.md](ZULUTALK.md) for what
+ZuluTalk changes and why, and for full credits to Linphone.
+
+- Website: https://zulutalk.com
+- Download: [latest release](https://github.com/kaspaguy/Zulutalk/releases/latest) (free, signed APK, Android 9+, 64-bit ARM)
+- **Problems and error logs: reports@zulutalk.com.** Send ZuluTalk logs to us, not to Linphone.
+  The Linphone sections below (Troubleshooting, issue reporting) apply to the original Linphone
+  app, not to ZuluTalk.
+
+ZuluTalk is a product of Thanaaya Technologies. It is not affiliated with or supported by
+Belledonne Communications.
+
+The upstream Linphone README follows unchanged.
 
 ---
 
